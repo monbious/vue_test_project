@@ -9,7 +9,17 @@
 <div id="test">
     <input type="text" v-model="msg">
     <p>hello {{msg}}</p>
-
+</div>
+<div id="test2">
+    <h2>1.双大括号表达式</h2>
+    <p>{{msg2.toUpperCase()}}</p>
+    <h2>2.指令一: 强制数据绑定</h2>
+    <a href="url">链接1</a>
+    <a v-bind:href="url">链接2</a>
+    <a :href="url">链接3</a>
+    <h2>3.指令二: 强制事件监听</h2>
+    <button v-on:click="cclick">click</button>
+    <button v-on:click="cclick2('abc')">click2</button>
 </div>
 
 <script src="../js/vue.js"></script>
@@ -18,6 +28,21 @@
         el: '#test',
         data: {
             msg: 'mx'
+        }
+    })
+    new Vue({
+        el: '#test2',
+        data: {
+            msg2: 'mx2',
+            url: 'www.baidu.com'
+        },
+        methods: {
+            cclick () {
+                alert('cclick');
+            },
+            cclick2 (msg) {
+                alert(msg);
+            }
         }
     })
 
