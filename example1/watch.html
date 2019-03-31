@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>watch</title>
+</head>
+<body>
+
+<script src="../js/vue.js"></script>
+<script>
+    const obj = {
+        firstName: 'aa',
+        lastName: 'bb'
+    }
+    Object.defineProperty(obj, 'fullName', {
+        get () {
+            console.log('get()');
+            return this.firstName + '-' + this.lastName;
+        },
+        set (value) {
+            console.log('set()', value);
+            const names = value.split("-");
+            this.firstName = names[0];
+            this.lastName = names[1];
+        }
+    })
+    console.log(obj.fullName);
+    obj.fullName = 'cc-dd';
+    console.log(obj.fullName);
+    console.log(obj.firstName);
+    console.log(obj.lastName);
+
+</script>
+
+</body>
+</html>
